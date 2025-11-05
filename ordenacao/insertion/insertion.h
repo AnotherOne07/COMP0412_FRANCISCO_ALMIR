@@ -12,18 +12,22 @@
     INSERTION SORT:
         LEIA A
         PARA I -> 0 ATÉ TAMANHO(A) - 1:
-            J -> I + 1
+            J -> 1
             CHAVE -> A[0]
             ENQUANTO CHAVE < A[J] E J < TAMANHO(A):
                 TROCA(A, J, J-1)
                 J < J + 1
 
+    ANÁLISE DE COMPLEXIDADE:
 
+    INVARIANTE
+
+    RECORRÊNCIA
  */
 
 void swap(int *A, int i1, int i2);
 void insertion(int *A, int n);
 
 void insertion(int *A, int n){
-
+    
 }

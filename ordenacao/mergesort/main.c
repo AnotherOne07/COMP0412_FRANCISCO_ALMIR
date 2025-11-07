@@ -3,7 +3,7 @@
 
 int main (){
     int *A;
-    int n = 10;
+    int n = 100;
     A = malloc(sizeof(int) * n);
     mergesort2(A, n);
     free(A);

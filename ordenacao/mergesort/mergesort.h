@@ -38,67 +38,58 @@ void createRandomArray(int *A, int n);
 void printArray(int *A, int n);
 
 void intercala(int* A, int p, int q, int r){
-    int n1, n2, i, j;
+    int n1 = q - p + 1;
+    int n2 = r - q;
 
-    n1 = q - p + 1;
-    n2 = r - q;
+    int *L = malloc(n1 * sizeof(int));
+    int *R = malloc(n2 * sizeof(int));
 
-    int *L, *R;
+    for (int i = 0; i < n1; i++)
+        L[i] = A[p + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = A[q + 1 + j];
 
-    L = malloc(sizeof(int) * n1);
-    R = malloc(sizeof(int) * n2);
-
-    for(i=0; i < n1;i++){
-        *L = *(A+p+1);    
-    }
-
-    for(j=0; j < n2;j++){
-        *R = *(A+q+1+j);
-    }
-
-    i = 0;j = 0;
-
-    for(int k = p; k <= r; k++){
-        if (*(L+i) <= *(R+j)){
-            *(A+k) = *(L+i);
+    int i = 0, j = 0;
+    for (int k = p; k <= r; k++) {
+        if (i < n1 && (j >= n2 || L[i] <= R[j])) {
+            A[k] = L[i];
             i++;
         } else {
-            *(A+k) = *(R+i);
+            A[k] = R[j];
             j++;
         }
     }
+
+    free(L);
+    free(R);
 }
 
 void mergesort(int *A, int p, int r){
-    int q;
-    if(p < r){
-        q = (p+r)/2;
-        mergesort(A, p, q); // Left sub array
-        mergesort(A, q+1, r); // right sub array
+    if (p < r){
+        int q = (p + r) / 2;
+        mergesort(A, p, q);
+        mergesort(A, q + 1, r);
         intercala(A, p, q, r);
     }
 }
 
 void mergesort2(int *A, int n){
     createRandomArray(A, n);
+    printf("Array original:\n");
     printArray(A, n);
-    mergesort(A, 0, n-1);
-    printArray(A,n);
-};
+    mergesort(A, 0, n - 1);
+    printf("\nArray ordenado:\n");
+    printArray(A, n);
+    printf("\n");
+}
 
 void createRandomArray(int *A, int n){
-    A = malloc(sizeof(int)*n);
-    int key;
-    for(int i = 0; i < n;i++){
-        key = (rand() % 100);
-        printf("I:%d - Key:%d\n", i, key);
-        *(A+i) = key;
-    }
+    for (int i = 0; i < n; i++)
+        A[i] = rand() % 100;
 }
 
 void printArray(int *A, int n){
-    for(int i = 0; i < n;i++){
-        printf("%d ", *(A+i));
-    }
+    for (int i = 0; i < n; i++)
+        printf("%d ", A[i]);
     printf("\n");
 }

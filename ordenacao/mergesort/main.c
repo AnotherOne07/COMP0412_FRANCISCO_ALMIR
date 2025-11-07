@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include "mergesort.h"
 
-void main (){
+int main (){
     int *A;
-    mergesort2(A, 10);
+    int n = 10;
+    A = malloc(sizeof(int) * n);
+    mergesort2(A, n);
+    free(A);
+    return 0;
 }

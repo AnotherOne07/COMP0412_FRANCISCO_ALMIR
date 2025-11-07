@@ -18,8 +18,14 @@
             A[J+1] <- CHAVE
 
     ANÁLISE DE COMPLEXIDADE:
+    Melhor caso: vetor já ordenado
+    Pior caso: vetor já em ordem descrescente
+    caso médio:  
 
-    INVARIANTE
+    INVARIANTE: é o vetor já ordenado, desde a primeira iteração onde definimos o vetor inicial
+    já está ordenado, a partir de cada iteração, conforme os elementos são adicionados na sua
+    posição correta do vetor, temos que o vetor inicial está ordenado.
+
 
     RECORRÊNCIA
  */

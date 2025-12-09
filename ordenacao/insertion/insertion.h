@@ -33,12 +33,12 @@
 void insertion(int *A, int n);
 
 void insertion(int *A, int n){
-    int v[] = {5,2,4,6,1,3};
+    // int v[] = {5,2,4,6,1,3};
     
-    for(int i = 0; i < n;i++){
-        printf("%d ", v[i]);
-        *(A+i) = v[i];
-    }
+    // for(int i = 0; i < n;i++){
+    //     printf("%d ", v[i]);
+    //     *(A+i) = v[i];
+    // }
 
     int key, j;
     for(int i = 1; i < n; i++){
@@ -51,8 +51,8 @@ void insertion(int *A, int n){
         *(A+j+1) = key;
     }
 
-    printf("\n");
-    for(int i = 0; i < n;i++){
-        printf("%d ", *(A+i));
-    }
+    // printf("\n");
+    // for(int i = 0; i < n;i++){
+    //     printf("%d ", *(A+i));
+    // }
 }

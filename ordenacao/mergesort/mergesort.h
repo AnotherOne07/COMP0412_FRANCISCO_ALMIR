@@ -34,10 +34,6 @@
 void mergesort(int *A, int p, int r);
 void mergesort2(int *A, int n);
 void intercala(int *A, int p, int q, int r);
-void createRandomArray(int *A, int n);
-void createDecrescentArray(int *A, int n);
-void createCrescentArray(int *A, int n);
-void printArray(int *A, int n);
 
 void intercala(int* A, int p, int q, int r){
     int n1 = q - p + 1;
@@ -76,34 +72,11 @@ void mergesort(int *A, int p, int r){
 }
 
 void mergesort2(int *A, int n){
-    createRandomArray(A, n);
-    printf("Array original:\n");
-    printArray(A, n);
+    // createRandomArray(A, n);
+    // printf("Array original:\n");
+    // printArray(A, n);
     mergesort(A, 0, n - 1);
-    printf("\nArray ordenado:\n");
-    printArray(A, n);
-    printf("\n");
-}
-
-void createRandomArray(int *A, int n){
-    for (int i = 0; i < n; i++)
-        A[i] = rand() % 100;
-}
-
-void createDecrescentArray(int *A, int n){
-    for (int i = 0; i < n;i++){
-        A[i] = i;
-    }
-}
-
-void createCrescentArray(int *A, int n){
-    for(int i = n; i >= 0;i++){
-        A[i] = i;
-    }
-}
-
-void printArray(int *A, int n){
-    for (int i = 0; i < n; i++)
-        printf("%d ", A[i]);
+    // printf("\nArray ordenado:\n");
+    // printArray(A, n);
     printf("\n");
 }

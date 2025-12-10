@@ -78,5 +78,5 @@ void mergesort2(int *A, int n){
     mergesort(A, 0, n - 1);
     // printf("\nArray ordenado:\n");
     // printArray(A, n);
-    printf("\n");
+    // printf("\n");
 }

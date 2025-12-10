@@ -6,15 +6,18 @@
 int main (){
     int *A;
     int n = 100;
-    clock_t inicial, final;
     A = malloc(sizeof(int) * n);
 
     while(n < 500000){
-        createRandomArray(A, n);
-        inicial = clock();
-        mergesort2(A, n);
-        final = clock() - inicial;
-        printf("%d %lf\n", n, (double)final * 1000 / CLOCKS_PER_SEC);
+
+        double t_random = time_counter(createRandomArray, mergesort2, n, A);
+        double t_crescente = time_counter(createCrescentArray, mergesort2, n, A);
+        double t_decrescente = time_counter(createDecrescentArray, mergesort2, n, A);        
+        
+        printf("random %d %.6lf\n", n, t_random);
+        printf("crescente %d %.6lf\n", n, t_crescente);
+        printf("decrescente %d %.6lf\n", n, t_decrescente);
+
         n += n;
         A = realloc(A, n * sizeof(n));
     }

@@ -7,13 +7,15 @@ void createRandomArray(int *A, int n){
 }
 
 void createDecrescentArray(int *A, int n){
-    for (int i = 0; i < n;i++){
-        A[i] = i;
+    int j = n - 1;
+    for (int i = 0; i <= n; i++){
+        A[i] = j;
+        j--;
     }
 }
 
 void createCrescentArray(int *A, int n){
-    for(int i = n; i >= 0;i++){
+    for(int i = 0; i <= n;i++){
         A[i] = i;
     }
 }

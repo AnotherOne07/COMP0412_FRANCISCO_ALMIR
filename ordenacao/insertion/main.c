@@ -1,22 +1,39 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "insertion.h"
 #include "../faux/auxiliar.h"
 #include <time.h>
 
-void main(){
+double medir_tempo(void (*gerador)(int*, int), int n, int *A){
+    clock_t ini,fim;
+    gerador(A,n);
+    // printArray(A, n);
+    ini = clock();
+    insertion(A,n);
+    // printArray(A, n);
+    fim = clock() - ini;
+    return (double)fim * 1000 / CLOCKS_PER_SEC;
+}
+
+int main(){
     int *A,n = 100;
-    clock_t inicial, final;
 
     A = malloc(n * sizeof(int));
-    while(n < 200000){
-        createRandomArray(A,n);
-        inicial = clock();
-        insertion(A,n);
-        final = clock() - inicial;
-        printf("%d %lf\n", n, (double)final * 1000 / CLOCKS_PER_SEC);
+
+    while(n <= 200000){
+        
+        double t_random = medir_tempo(createRandomArray, n, A);
+        double t_crescente = medir_tempo(createCrescentArray, n, A);
+        double t_decrescente = medir_tempo(createDecrescentArray, n, A);        
+
+        printf("random %d %.6lf\n", n, t_random);
+        printf("crescente %d %.6lf\n", n, t_crescente);
+        printf("decrescente %d %.6lf\n", n, t_decrescente);
+
         n += n;
         A = realloc(A, n * sizeof(n));
     }
     free(A);
+    return 0;
 }
 

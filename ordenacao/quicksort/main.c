@@ -12,10 +12,10 @@ double time_counter_qs(void (*generator)(int*, int), int n, int *A){
 }
 
 int main(){
-    int reps = 1;
+    int reps = 10;
     int n = 100;
     
-    while(n <= 300000){
+    while(n <= 50000){
         int* A = malloc(n * sizeof(int));
         for(int i = 0;i < reps;i++){
             double t_random = time_counter_qs(createRandomArray, n, A);
